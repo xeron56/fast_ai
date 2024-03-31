@@ -1,0 +1,12 @@
+import 'package:fast_ai/widgets/app_bar/custom_app_bar.dart';import 'package:fast_ai/widgets/app_bar/appbar_leading_iconbutton_five.dart';import 'package:fast_ai/widgets/app_bar/appbar_trailing_iconbutton_three.dart';import 'widgets/images_item_widget.dart';import 'models/images_item_model.dart';import 'package:flutter/material.dart';import 'package:fast_ai/core/app_export.dart';import 'controller/image_converted_controller.dart';// ignore_for_file: must_be_immutable
+class ImageConvertedScreen extends GetWidget<ImageConvertedController> {const ImageConvertedScreen({Key? key}) : super(key: key, );
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(body: SizedBox(width: double.maxFinite, child: Column(children: [SizedBox(height: 20.v), Container(padding: EdgeInsets.symmetric(vertical: 20.v), decoration: AppDecoration.fillGray90005.copyWith(borderRadius: BorderRadiusStyle.roundedBorder40, ), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [SizedBox(height: 10.v), _buildAppBar(), SizedBox(height: 25.v), Container(width: 225.h, margin: EdgeInsets.only(left: 30.h), child: Text("msg_avatars_converted".tr.toUpperCase(), maxLines: 2, overflow: TextOverflow.ellipsis, style: theme.textTheme.displayMedium!.copyWith(height: 1.04, ), ), ), Padding(padding: EdgeInsets.only(left: 30.h), child: Text("msg_your_awesome_avatars".tr, style: CustomTextStyles.titleLargeGray60003, ), ), SizedBox(height: 18.v), _buildImages()], ), )], ), ), ), ); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: 80.h, leading: AppbarLeadingIconbuttonFive(imagePath: ImageConstant.imgArrowLeft, margin: EdgeInsets.only(left: 30.h), onTap: () {onTapArrowLeft();}, ), actions: [AppbarTrailingIconbuttonThree(imagePath: ImageConstant.imgFolder, margin: EdgeInsets.symmetric(horizontal: 30.h), )], ); } 
+/// Section Widget
+Widget _buildImages() { return Align(alignment: Alignment.center, child: Padding(padding: EdgeInsets.symmetric(horizontal: 30.h), child: Obx(() => ListView.separated(physics: NeverScrollableScrollPhysics(), shrinkWrap: true, separatorBuilder: (context, index) {return SizedBox(height: 20.v, );}, itemCount: controller.imageConvertedModelObj.value.imagesItemList.value.length, itemBuilder: (context, index) {ImagesItemModel model = controller.imageConvertedModelObj.value.imagesItemList.value[index]; return ImagesItemWidget(model, );}, ), ), ), ); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }

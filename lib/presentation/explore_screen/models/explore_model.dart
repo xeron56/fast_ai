@@ -1,0 +1,5 @@
+import '../../../core/app_export.dart';import 'explore_item_model.dart';/// This class defines the variables used in the [explore_screen],
+/// and is typically used to hold data that is passed between different parts of the application.
+class ExploreModel {Rx<List<ExploreItemModel>> exploreItemList = Rx([ExploreItemModel(settings:ImageConstant.imgSettings.obs,voiceAI: "Animiya".obs,convertTextToVoice: "Convert Text To Voice".obs),ExploreItemModel(settings:ImageConstant.imgSettingsWhiteA700.obs,voiceAI: "Word Ly".obs,convertTextToVoice: "Convert Text To Voice".obs),ExploreItemModel(settings:ImageConstant.imgBag.obs,voiceAI: "Fash vid".obs,convertTextToVoice: "Convert Text To Voice".obs),ExploreItemModel(settings:ImageConstant.imgUser.obs,voiceAI: "ao Pix".obs,convertTextToVoice: "Convert Text To Voice".obs),ExploreItemModel(settings:ImageConstant.imgBag.obs,voiceAI: "VIDEO AI".obs,convertTextToVoice: "Convert Text To Voice".obs),ExploreItemModel(settings:ImageConstant.imgUser.obs,voiceAI: "Text AI".obs,convertTextToVoice: "Convert Text To Voice".obs)]);
+
+ }

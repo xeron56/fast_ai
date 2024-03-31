@@ -1,0 +1,16 @@
+import 'package:fast_ai/widgets/app_bar/custom_app_bar.dart';import 'package:fast_ai/widgets/app_bar/appbar_leading_iconbutton_four.dart';import 'package:fast_ai/widgets/app_bar/appbar_trailing_iconbutton_two.dart';import 'widgets/characters_item_widget.dart';import 'models/characters_item_model.dart';import 'package:fast_ai/widgets/custom_floating_button.dart';import 'package:flutter/material.dart';import 'package:fast_ai/core/app_export.dart';import 'controller/characters_controller.dart';// ignore_for_file: must_be_immutable
+class CharactersScreen extends GetWidget<CharactersController> {const CharactersScreen({Key? key}) : super(key: key, );
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(), body: SizedBox(width: SizeUtils.width, child: SingleChildScrollView(child: SizedBox(height: 833.v, width: double.maxFinite, child: Stack(alignment: Alignment.bottomCenter, children: [Align(alignment: Alignment.topCenter, child: Container(height: 792.v, width: double.maxFinite, decoration: BoxDecoration(color: theme.colorScheme.primaryContainer, borderRadius: BorderRadius.circular(40.h, ), ), ), ), Align(alignment: Alignment.bottomCenter, child: Padding(padding: EdgeInsets.symmetric(horizontal: 30.h), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [Text("lbl_characters".tr.toUpperCase(), style: theme.textTheme.displayMedium, ), Text("msg_explore_more_then".tr, style: CustomTextStyles.titleLargeGray60002, ), SizedBox(height: 16.v), _buildCharacters()], ), ), ), _buildFloatingActionButton()], ), ), ), ), floatingActionButton: _buildFloatingActionButton1(), ), ); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: 80.h, leading: AppbarLeadingIconbuttonFour(imagePath: ImageConstant.imgArrowLeft, margin: EdgeInsets.only(left: 30.h), onTap: () {onTapArrowLeft();}, ), actions: [AppbarTrailingIconbuttonTwo(imagePath: ImageConstant.imgCut, margin: EdgeInsets.symmetric(horizontal: 30.h), )], ); } 
+/// Section Widget
+Widget _buildCharacters() { return Obx(() => GridView.builder(shrinkWrap: true, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(mainAxisExtent: 145.v, crossAxisCount: 2, mainAxisSpacing: 15.h, crossAxisSpacing: 15.h, ), physics: NeverScrollableScrollPhysics(), itemCount: controller.charactersModelObj.value.charactersItemList.value.length, itemBuilder: (context, index) {CharactersItemModel model = controller.charactersModelObj.value.charactersItemList.value[index]; return CharactersItemWidget(model, );}, ), ); } 
+/// Section Widget
+Widget _buildFloatingActionButton() { return CustomFloatingButton(height: 56, width: 56, backgroundColor: appTheme.greenA70001, alignment: Alignment.bottomRight, child: CustomImageView(imagePath: ImageConstant.imgThumbsUp, height: 28.0.v, width: 28.0.h, ), ); } 
+/// Section Widget
+Widget _buildFloatingActionButton1() { return CustomFloatingButton(height: 56, width: 56, backgroundColor: appTheme.greenA70001, child: CustomImageView(imagePath: ImageConstant.imgThumbsUp, height: 28.0.v, width: 28.0.h, ), ); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }
