@@ -1,0 +1,12 @@
+import 'package:fast_ai/widgets/app_bar/custom_app_bar.dart';import 'package:fast_ai/widgets/app_bar/appbar_leading_iconbutton_five.dart';import 'package:fast_ai/widgets/app_bar/appbar_trailing_iconbutton_three.dart';import 'widgets/cards1_item_widget.dart';import 'models/cards1_item_model.dart';import 'package:flutter/material.dart';import 'package:fast_ai/core/app_export.dart';import 'controller/avatar_collection_controller.dart';// ignore_for_file: must_be_immutable
+class AvatarCollectionScreen extends GetWidget<AvatarCollectionController> {const AvatarCollectionScreen({Key? key}) : super(key: key, );
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(body: SizedBox(width: double.maxFinite, child: Column(children: [SizedBox(height: 20.v), Container(padding: EdgeInsets.symmetric(vertical: 30.v), decoration: AppDecoration.fillGray90005.copyWith(borderRadius: BorderRadiusStyle.roundedBorder40, ), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [_buildAppBar(), SizedBox(height: 25.v), Container(width: 259.h, margin: EdgeInsets.only(left: 30.h), child: Text("msg_my_avatar_collections".tr.toUpperCase(), maxLines: 2, overflow: TextOverflow.ellipsis, style: theme.textTheme.displayMedium!.copyWith(height: 1.04, ), ), ), Padding(padding: EdgeInsets.only(left: 30.h), child: Text("msg_you_can_see_all".tr, style: CustomTextStyles.titleLargeGray60003, ), ), SizedBox(height: 26.v), _buildCards(), SizedBox(height: 26.v)], ), )], ), ), ), ); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: 80.h, leading: AppbarLeadingIconbuttonFive(imagePath: ImageConstant.imgArrowLeft, margin: EdgeInsets.only(left: 30.h), onTap: () {onTapArrowLeft();}, ), actions: [AppbarTrailingIconbuttonThree(imagePath: ImageConstant.imgCut, margin: EdgeInsets.symmetric(horizontal: 30.h), )], ); } 
+/// Section Widget
+Widget _buildCards() { return Align(alignment: Alignment.center, child: Padding(padding: EdgeInsets.symmetric(horizontal: 30.h), child: Obx(() => ListView.separated(physics: NeverScrollableScrollPhysics(), shrinkWrap: true, separatorBuilder: (context, index) {return SizedBox(height: 20.v, );}, itemCount: controller.avatarCollectionModelObj.value.cards1ItemList.value.length, itemBuilder: (context, index) {Cards1ItemModel model = controller.avatarCollectionModelObj.value.cards1ItemList.value[index]; return Cards1ItemWidget(model, );}, ), ), ), ); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }

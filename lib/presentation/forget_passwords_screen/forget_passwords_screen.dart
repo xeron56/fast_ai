@@ -1,0 +1,14 @@
+import 'package:fast_ai/widgets/app_bar/custom_app_bar.dart';import 'package:fast_ai/widgets/app_bar/appbar_leading_iconbutton.dart';import 'package:fast_ai/core/utils/validation_functions.dart';import 'package:fast_ai/widgets/custom_text_form_field.dart';import 'package:fast_ai/widgets/custom_elevated_button.dart';import 'package:flutter/material.dart';import 'package:fast_ai/core/app_export.dart';import 'controller/forget_passwords_controller.dart';// ignore_for_file: must_be_immutable
+
+// ignore_for_file: must_be_immutable
+class ForgetPasswordsScreen extends GetWidget<ForgetPasswordsController> {ForgetPasswordsScreen({Key? key}) : super(key: key, );
+
+GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(resizeToAvoidBottomInset: false, body: SizedBox(width: SizeUtils.width, child: SingleChildScrollView(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom, ), child: Form(key: _formKey, child: SizedBox(width: double.maxFinite, child: Column(children: [SizedBox(height: 20.v), Container(padding: EdgeInsets.symmetric(vertical: 30.v), decoration: AppDecoration.fillOnErrorContainer.copyWith(borderRadius: BorderRadiusStyle.roundedBorder40, ), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [_buildAppBar(), SizedBox(height: 25.v), Container(width: 271.h, margin: EdgeInsets.only(left: 30.h, right: 73.h, ), child: Text("msg_forget_passwords".tr.toUpperCase(), maxLines: 2, overflow: TextOverflow.ellipsis, style: theme.textTheme.displayMedium!.copyWith(height: 1.04, ), ), ), Padding(padding: EdgeInsets.only(left: 30.h), child: Text("msg_please_enter_your".tr, style: CustomTextStyles.titleLargeBluegray400, ), ), SizedBox(height: 26.v), Padding(padding: EdgeInsets.symmetric(horizontal: 30.h), child: CustomTextFormField(controller: controller.emailController, hintText: "lbl_email_address".tr, hintStyle: CustomTextStyles.titleMediumBluegray400_1, textInputAction: TextInputAction.done, textInputType: TextInputType.emailAddress, alignment: Alignment.center, validator: (value) {if (value == null || (!isValidEmail(value, isRequired: true))) {return "err_msg_please_enter_valid_email".tr;} return null;}, ), ), SizedBox(height: 40.v), CustomElevatedButton(text: "lbl_continue".tr, margin: EdgeInsets.symmetric(horizontal: 30.h), alignment: Alignment.center, ), SizedBox(height: 40.v)], ), )], ), ), ), ), ), ), ); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(leadingWidth: double.maxFinite, leading: AppbarLeadingIconbutton(imagePath: ImageConstant.imgArrowLeft, margin: EdgeInsets.only(left: 30.h, right: 295.h, ), onTap: () {onTapArrowLeft();}, ), ); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }
